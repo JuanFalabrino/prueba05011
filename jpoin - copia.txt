@@ -1,0 +1,14 @@
+SELECT 
+    B.id AS id_detalle_orden,
+    A.id AS id_orden,
+    A.order_date,
+    B.product_id,
+    B.quantity,
+    B.unit_price,
+    ROUND((B.quantity * B.unit_price), 0) as importe
+FROM
+    northwind.orders A
+        INNER JOIN
+    northwind.order_details B ON A.id = B.order_id
+WHERE order_id = 44
+ORDER BY id_orden
